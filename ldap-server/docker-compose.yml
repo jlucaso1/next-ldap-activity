@@ -1,7 +1,7 @@
 version: '2'
 services:
   ldap:
-    image: osixia/openldap:1.2.0
+    image: osixia/openldap:stable
     container_name: ldap
     command: --copy-service
     environment:
