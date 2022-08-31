@@ -1,5 +1,6 @@
-export const parseUsernameLDAP = (dn: string) => {
+export const parseDN = (dn?: string) => {
+  if (!dn) return;
   const parts = dn.split(",");
-  if (!parts[0]) return;
-  return parts[0].split("=")[1];
+
+  return parts.reverse();
 };
