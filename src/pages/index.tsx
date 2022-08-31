@@ -13,20 +13,20 @@ const Home: NextPage = () => {
     return <div>Loading...</div>;
   }
 
+  const title = isAuthenticated
+    ? `Welcome ${parseUsernameLDAP(data.user.dn)}`
+    : "Please sign in";
+  const action = isAuthenticated ? () => signOut() : () => signIn();
+  const buttonText = isAuthenticated ? "Sign out" : "Sign in";
   return (
-    <>
-      {isAuthenticated ? (
-        <div>
-          <h1>Welcome {parseUsernameLDAP(data.user.dn)}</h1>
-          <button onClick={() => signOut()}>Logout</button>
-        </div>
-      ) : (
-        <div>
-          <h1>Please sign in</h1>
-          <button onClick={() => signIn()}>Sign in</button>
-        </div>
-      )}
-    </>
+    <div className="h-screen w-screen relative">
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col justify-center items-center gap-y-5">
+        <h1 className="text-5xl">{title}</h1>
+        <button className="btn max-w-max" onClick={action}>
+          {buttonText}
+        </button>
+      </div>
+    </div>
   );
 };
 
