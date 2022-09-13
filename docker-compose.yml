@@ -5,8 +5,10 @@ services:
       context: "./"
       dockerfile: Dockerfile.dev
     environment:
-      APP_ENV: development
       LDAP_URL: ${LDAP_URL}
+      NEXTAUTH_URL: ${NEXTAUTH_URL}
+      NEXTAUTH_SECRET: ${NEXTAUTH_SECRET}
+      NEXTAUTH_JWT_SECRET: ${NEXTAUTH_JWT_SECRET}
     volumes:
       - "./src:/app/src"
     ports:
